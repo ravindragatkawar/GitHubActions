@@ -1,0 +1,22 @@
+---
+name: CI-CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup python
+        uses: actions/setup-python@v7
+        with:
+           python-version: '3.13' 
+
+      - name: Run python program
+        run: python3 helloworld.py
