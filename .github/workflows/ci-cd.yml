@@ -20,3 +20,7 @@ jobs:
 
       - name: Run python program
         run: python3 helloworld.py
+      
+      - name: Print actions run url
+        run: echo ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        
