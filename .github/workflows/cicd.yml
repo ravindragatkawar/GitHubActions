@@ -1,5 +1,5 @@
 # Name of the workflow
-name: CICD
+run-name: CICD started by ${{ github.actor }}
 
 # Events that triggers the workflow
 on: [workflow_dispatch]
