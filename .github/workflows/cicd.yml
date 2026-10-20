@@ -28,3 +28,13 @@ jobs:
       # Shell command execution
       - name: Build package
         run: python main.py
+
+      # Single command
+      - name: Single command
+        run: echo "Single command"
+
+      # Multiple commands
+      - name: Multiple commands, multiline script
+        run: |
+          echo "Multiple commands,"
+          echo "multiline script"
