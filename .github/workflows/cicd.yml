@@ -1,29 +1,16 @@
 # Name of the workflow
 run-name: CICD started by ${{ github.actor }}
 
-# Events that triggers the workflow
 on: [workflow_dispatch]
-
-# Jobs
+  
 jobs:
 
-  # Job
   build:
-    # Runner that executes the job
     runs-on: ubuntu-latest
 
-    # Steps
     steps:
-      # Action
-      - name: Checkout repository
-        uses: actions/checkout@v7
-
-      # Action with input parameters
-      - name: Setup up python
-        uses: actions/setup-python@v7
-        with:
-          python-version: '3.15' 
-
-      # Shell command execution
-      - name: Build package
-        run: python main.py
+      - name: Display repository var
+        run: echo ${{ vars.test_var }}
+      
+      - name: Display repository secret
+        run: echo ${{ secrets.test_secret }}
