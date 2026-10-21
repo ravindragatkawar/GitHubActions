@@ -1,7 +1,11 @@
 # Name of the workflow
 run-name: CICD started by ${{ github.actor }}
 
-on: [workflow_dispatch]
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
   
 jobs:
 
@@ -9,8 +13,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Display repository var
-        run: echo ${{ vars.test_var }}
+      - name: Build
+        run: echo "Build done"
+  
+  dev:
+    needs: build
+
+    runs-on: ubuntu-latest
+    
+    environment:
+      name: dev
+
+    steps:
+      - name: Dev
+        run: echo "${{ vars.test }}"
+  
+  prod:
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    environment:
+      name: prod
+
+    steps:
+      - name: Prod
+        run: echo "${{ vars.test }}"
       
-      - name: Display repository secret
-        run: echo ${{ secrets.test_secret }}
